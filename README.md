@@ -41,23 +41,23 @@ Supports addition, subtraction, multiplication, and integer division — even wi
 > macOS or Windows will not work directly — syscall conventions are different.
 
 ---
-
 ## ⚡ Build & Run
 
 Clone or download the repository, then:
 
 
-# Assemble and link
+# Assemble the program
 nasm -f elf64 calculator.asm -o calculator.o
-ld   calculator.o -o calculator
+
+# Link to create executable
+ld calculator.o -o calculator
 
 # Run the calculator
 ./calculator
 
 Or as a one-liner:
----
-nasm -f elf64 calculator.asm -o calculator.o && ld calculator.o -o calculator && ./calculator
 
+nasm -f elf64 calculator.asm -o calculator.o && ld calculator.o -o calculator && ./calculator
 💡 Examples
 First	Operator	Second	Output
 7	+	5	Result: 12
@@ -66,7 +66,6 @@ First	Operator	Second	Output
 17	/	4	Result: 4 (integer divide)
 10	/	0	Error: division by zero!
 -8	*	3	Result: -24
----
 🧩 How it Works
 .data — prompt strings and error messages
 .bss — uninitialized buffers for input parsing and number conversion
@@ -76,24 +75,20 @@ read_int — reads a signed integer from stdin
 read_char — reads a single character (operator)
 print_int — prints a signed integer
 exit — clean program exit
----
 
-The program uses Linux x86_64 syscalls. Signed division uses cqo to extend rax into rdx:rax before idiv.
----
+The program uses Linux x86_64 syscalls.
+Signed division uses cqo to extend rax into rdx:rax before idiv.
+
 📁 Project Structure
----
+.
 ├── calculator.asm   # full Assembly source code
 └── README.md        # this file
----
-
 ⚠ Troubleshooting
----
 nasm: command not found — install NASM.
 ld: cannot find ... — install binutils.
 No output / hangs — press Enter after each input; the program reads line-by-line.
 Wrong results for huge numbers — inputs must fit in 64-bit signed integers.
-
 📜 License
----
-Honestly it's just a cheep calculator toke me 3 hours to make take it if need ;).
+
+MIT — it's a simple calculator I made in ~3 hours, feel free to use or modify.rs to make take it if need ;).
 ---
