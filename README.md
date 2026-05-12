@@ -52,7 +52,7 @@ Clone or download the repository, then:
 
 Clone or download the repository, then:
 
-```bash
+---bas
 # Assemble the program
 nasm -f elf64 calculator.asm -o calculator.o
 
@@ -61,4 +61,33 @@ ld calculator.o -o calculator
 
 # Run the calculator
 ./calculator
+
+Or as a one-liner:
+```bash
+nasm -f elf64 calculator.asm -o calculator.o && ld calculator.o -o calculator && ./calculator
+```
+---
+💡 Examples
+First	Operator	Second	Output 
+_
+7	+	5	Result: 12
+20	-	30	Result: -10
+6	*	9	Result: 54
+17	/	4	Result: 4 (integer divide)
+10	/	0	Error: division by zero!
+-8	*	3	Result: -24
+
+
+🧩 How it Works
+.data — prompt strings and error messages
+.bss — uninitialized buffers for input parsing and number conversion
+.text — entry point _start plus helper routines:
+print — writes text to stdout
+read_int — reads a signed integer from stdin
+read_char — reads a single character (operator)
+print_int — prints a signed integer
+exit — clean program exit
+---
+The program uses Linux x86_64 syscalls.
+Signed division uses cqo to extend rax into rdx:rax before idiv.
 
