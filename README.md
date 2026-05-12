@@ -46,7 +46,7 @@ Supports addition, subtraction, multiplication, and integer division — even wi
 
 Clone or download the repository, then:
 
-```bash
+
 # Assemble and link
 nasm -f elf64 calculator.asm -o calculator.o
 ld   calculator.o -o calculator
