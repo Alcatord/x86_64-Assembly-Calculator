@@ -74,9 +74,10 @@ read_int — reads a signed integer from stdin
 read_char — reads a single character (operator)
 print_int — prints a signed integer
 exit — clean program exit
+--- 
 
 The program uses Linux x86_64 syscalls. Signed division uses cqo to extend rax into rdx:rax before idiv.
-
+---
 📁 Project Structure
 .
 ├── calculator.asm   # full Assembly source code
@@ -87,5 +88,6 @@ ld: cannot find ... — install binutils.
 No output / hangs — press Enter after each input; the program reads line-by-line.
 Wrong results for huge numbers — inputs must fit in 64-bit signed integers.
 📜 License
-
-MIT — do whatever you want with it
+---
+Honestly it's just a cheep calculator toke me 3 hours to make take it if need ;).
+---
