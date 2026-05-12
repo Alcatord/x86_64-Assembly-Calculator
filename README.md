@@ -53,11 +53,11 @@ ld   calculator.o -o calculator
 
 # Run the calculator
 ./calculator
----
-Or as a one-liner:
 
-nasm -f elf64 calculator.asm -o calculator.o && ld calculator.o -o calculator && ./calculator
+Or as a one-liner:
 ---
+nasm -f elf64 calculator.asm -o calculator.o && ld calculator.o -o calculator && ./calculator
+
 💡 Examples
 First	Operator	Second	Output
 7	+	5	Result: 12
@@ -81,14 +81,18 @@ exit — clean program exit
 The program uses Linux x86_64 syscalls. Signed division uses cqo to extend rax into rdx:rax before idiv.
 ---
 📁 Project Structure
-.
+---
 ├── calculator.asm   # full Assembly source code
 └── README.md        # this file
+---
+
 ⚠ Troubleshooting
+---
 nasm: command not found — install NASM.
 ld: cannot find ... — install binutils.
 No output / hangs — press Enter after each input; the program reads line-by-line.
 Wrong results for huge numbers — inputs must fit in 64-bit signed integers.
+
 📜 License
 ---
 Honestly it's just a cheep calculator toke me 3 hours to make take it if need ;).
